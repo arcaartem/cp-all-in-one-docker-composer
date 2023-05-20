@@ -1,0 +1,7 @@
+extends: default
+
+rules:
+  indentation:
+    indent-sequences: whatever
+  line-length:
+    max: 120
