@@ -22,7 +22,6 @@ class ConfluentPlatformComposer
         jmx_port: 9101 + counter
       }
     end
-
   end
 
   def compose

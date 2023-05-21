@@ -42,6 +42,7 @@ services:
       KAFKA_JMX_PORT: 9101
       KAFKA_JMX_HOSTNAME: localhost
       KAFKA_CONFLUENT_SCHEMA_REGISTRY_URL: http://schema-registry:8081
+      KAFKA_BROKER_RACK: rack-<%= member[:id] %>
       CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: <%= member[:name] %>:29092
       CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 1
       CONFLUENT_METRICS_ENABLE: 'true'
