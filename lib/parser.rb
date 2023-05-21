@@ -1,11 +1,11 @@
 require 'optparse'
 
-Options = Struct.new(:zookeeper_ensemble_size, :broker_cluster_size)
+Options = Struct.new(:zookeeper_ensemble_size, :broker_cluster_size, :overwrite)
 
 class Parser
   def self.parse(options=ARGV)
 
-    args = Options.new(1, 5) # Defaults (Zookeeper: 1, Broker: 5)
+    args = Options.new(1, 5, false) # Defaults (Zookeeper: 1, Broker: 5)
 
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: cp_compose.rb [options]"
@@ -16,6 +16,10 @@ class Parser
 
       opts.on('-b', '--broker-cluster-size SIZE', Integer, "Desired SIZE of Broker cluster in the generated docker compose file. Default is 5") do |s|
         args.broker_cluster_size = s
+      end
+
+      opts.on('-f', '--[no-]force', "Overwrite existing docker compose file") do |f|
+        args.overwrite = f
       end
 
       opts.on('-h', '--help', 'Prints this help') do
